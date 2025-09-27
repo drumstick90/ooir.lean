@@ -1,0 +1,65 @@
+[2025-09-26T20:29:43Z] [INFO] ===== START fetch =====
+[2025-09-26T20:29:43Z] [INFO] Command: python3 -u /root/ooir.lean/src/pipeline_fetch.py
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch: start
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch: target=https://ooir.org/trending.php?field=Clinical+Medicine&category=Psychiatry&days=7
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch.http: start
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch.http: done in 0.25s rc=0 bytes=27984
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch: parsed pairs=10
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch: saving chars=1393 -> /root/ooir.lean/data/ooir_psy_trending_20250926_202943.tsv
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] fetch: done in 0.26s output=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.tsv
+[2025-09-26T20:29:43Z] [INFO] ===== DONE fetch in 0s =====
+[2025-09-26T20:29:43Z] [INFO] ===== START summarize =====
+[2025-09-26T20:29:43Z] [INFO] Command: python3 -u /root/ooir.lean/src/pipeline_summarize.py
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] summarize: start
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] summarize: input chars=1393
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] summarize: PROMPT SENT ->
+Sei un assistente italiano human-like. Trasforma l'elenco TSV (rank<TAB>title<TAB>journal) in un copione scorrevole e conciso, ottimizzato per TTS. Regole:
+- Apertura breve e chiara: 'Ciao Pier, queste sono le notizie della settimana.'
+- UNA frase ciascuno al presente; soggetto esplicito (es. 'uno studio', 'una review', 'un trial'),   verbo chiaro (es. 'identifica', 'analizza', 'valuta'). Cita SEMPRE il journal (es. JAMA Psychiatry).
+- Aggiungi micro-transizioni leggere tra alcuni punti. Esempi NON vincolanti:   'Poi', 'Intanto', 'Da segnalare', 'Passiamo ora a', 'Nel frattempo', 'In parallelo', 'Guardiamo a',   'Chiudiamo con', 'Infine, uno sguardo a'. Varia le transizioni (usa 3–4 diverse), evita ripetizioni fisse settimana su settimana.
+- Frasi brevi, punteggiatura che aiuta la lettura, tono professionale ma umano (non enfatico, non colloquiale).
+- Chiudi con una sola riga di wrap-up: 'Questa settimana i temi caldi erano: X, Y, Z. Buona giornata.'
+- Non inventare informazioni non presenti nei titoli; niente link, niente numeri aggiuntivi, niente caratteri che possano confendere un modello text-to-speech.
+Non devono esserci righe vuote.
+
+Input (TSV) da usare come unica fonte: rank<TAB>title<TAB>journal
+
+Ecco i dati:
+1	Glucagon-like Peptide-1 receptor agonists as emerging therapeutics in bipolar disorder: a narrative review of preclinical and clinical evidence	Molecular Psychiatry
+2	Mental health in Californian Jews before and after October 7, 2023.	Psychological Trauma-Theory Research Practice and Policy
+3	Attention‐deficit/hyperactivity disorder (ADHD) in adults: evidence base, uncertainties and controversies	World Psychiatry
+4	A pragmatic randomized controlled trial of cognitive therapy for post‐traumatic stress disorder in children and adolescents exposed to multiple trauma	World Psychiatry
+5	Incidence of gynecological cancers following prolactin‐increasing antipsychotic use: a population cohort study	World Psychiatry
+6	A genetic common factor underlying self-reported math ability and highest math class taken	Molecular Psychiatry
+7	Psychedelic neuroplasticity of cortical neurons lacking 5-HT2A receptors	Molecular Psychiatry
+8	Boys don’t try? Gendered stigma specifically reduces help-seeking for disordered eating in men, but not women	Journal of Eating Disorders
+9	Exercise Addiction: a Thematic Analysis of Self-Reported Cases for Clinical Insight and Prevention	International Journal of Mental Health and Addiction
+10	Beyond symptom improvement: transdiagnostic and disorder‐specific ways to assess functional and quality of life outcomes across mental disorders in ad	World Psychiatry
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] summarize: trying model=gemini-2.5-pro-preview-03-25
+[2025-09-26 20:29:43] [INFO] [run_id=20250926-202943] summarize.http: start
+[2025-09-26 20:30:12] [INFO] [run_id=20250926-202943] summarize.http: done in 28.74s rc=0 bytes=2298
+[2025-09-26 20:30:12] [INFO] [run_id=20250926-202943] summarize: used model=gemini-2.5-pro-preview-03-25
+[2025-09-26 20:30:12] [INFO] [run_id=20250926-202943] summarize: saved chars=1733 -> /root/ooir.lean/data/ooir_psy_trending_20250926_202943.txt
+[2025-09-26 20:30:12] [INFO] [run_id=20250926-202943] summarize: done in 28.74s output=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.txt
+[2025-09-26T20:30:12Z] [INFO] ===== DONE summarize in 29s =====
+[2025-09-26T20:30:12Z] [INFO] ===== START tts =====
+[2025-09-26T20:30:12Z] [INFO] Command: python3 -u /root/ooir.lean/src/pipeline_tts.py
+[2025-09-26 20:30:13] [INFO] [run_id=20250926-203013] tts: start
+[2025-09-26 20:30:13] [INFO] [run_id=20250926-203013] tts: segments=13 max_seg_len=178
+[2025-09-26 20:30:13] [INFO] [run_id=20250926-203013] tts.http: start
+[2025-09-26 20:30:31] [INFO] [run_id=20250926-203013] tts.http: done in 18.69s status=200
+[2025-09-26 20:30:31] [INFO] [run_id=20250926-203013] tts: generated /root/ooir.lean/data/ooir_psy_trending_20250926_202943.ogg size=447797B
+[2025-09-26 20:30:31] [INFO] [run_id=20250926-203013] tts: done in 18.71s output=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.ogg
+[2025-09-26T20:30:31Z] [INFO] ===== DONE tts in 19s =====
+[2025-09-26T20:30:31Z] [INFO] ===== START notify =====
+[2025-09-26T20:30:31Z] [INFO] Command: python3 -u /root/ooir.lean/src/pipeline_notify.py
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: start
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: selected voice=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.ogg size=447797B
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: selected text=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.txt
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: caption_len=61
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify.http: start
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify.http: done in 0.46s status=200
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: inviato voice /root/ooir.lean/data/ooir_psy_trending_20250926_202943.ogg
+[2025-09-26 20:30:32] [INFO] [run_id=20250926-203032] notify: done in 0.46s voice=/root/ooir.lean/data/ooir_psy_trending_20250926_202943.ogg
+[2025-09-26T20:30:32Z] [INFO] ===== DONE notify in 1s =====
+[2025-09-26T20:30:32Z] [INFO] ALL STEPS COMPLETED in 49s

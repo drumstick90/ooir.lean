@@ -2,12 +2,8 @@
 secrets/.env
 secrets/.env.*
 
-# Data and logs (generated)
-data/
-logs/
 
 # Keep directories with .gitkeep
-!data/.gitkeep
 !secrets/.gitkeep
 
 # Python

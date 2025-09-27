@@ -1,0 +1,4 @@
+[2025-09-26T20:29:20Z] [INFO] ===== START fetch =====
+[2025-09-26T20:29:20Z] [INFO] Command: python -u /root/ooir.lean/src/pipeline_fetch.py
+/root/ooir.lean/scripts/run_weekly_pipeline.sh: line 34: python: command not found
+[2025-09-26T20:29:20Z] [ERROR] ===== FAILED fetch (exit 127) after 0s =====
